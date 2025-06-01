@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #cfd9df);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px; /* Add some padding for smaller screens */
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 450px; /* Slightly wider to accommodate new elements */
+    width: 90%;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.correct {
+    background-color: #6aaa64;
+    color: white;
+    border-color: #6aaa64;
+}
+
+.present {
+    background-color: #c9b458;
+    color: white;
+    border-color: #c9b458;
+}
+
+.absent {
+    background-color: #787c7e;
+    color: white;
+    border-color: #787c7e;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px; /* Added margin */
+}
+
+#guess-input {
+    padding: 10px;
+    font-size: 18px;
+    width: 60%;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* ✅ 重新開始按鈕 (以及所有其他具有 'button' 類別的按鈕) 的基礎風格定義在這裡 */
+.button {
+    padding: 10px 15px; /* 內邊距 */
+    font-size: 16px; /* 字體大小 */
+    background-color: #4CAF50; /* 背景顏色 (綠色) */
+    color: white; /* 文字顏色 */
+    border: none; /* 無邊框 */
+    border-radius: 8px; /* 圓角 */
+    cursor: pointer; /* 滑鼠游標為指針 */
+    transition: background-color 0.3s ease; /* 背景顏色變化的過渡效果 */
+    margin-top: 5px; /* 調整整體佈局的上邊距 */
+    white-space: nowrap; /* 防止按鈕文字換行 */
+}
+
+/* ✅ 重新開始按鈕 (以及所有其他具有 'button' 類別的按鈕) 在滑鼠懸停時的風格 */
+.button:hover {
+    background-color: #388e3c; /* 滑鼠懸停時的深綠色 */
+}
+
+#submit-btn {
+    /* submit-btn 由於也帶有 .button 類別，所以它會繼承上述 .button 的樣式。
+       如果這裡有額外定義，會覆蓋 .button 的部分樣式。
+       目前這裡的定義與 .button 相同，所以實際上是繼承了 .button 的樣式。 */
+    padding: 10px 15px; /* Keep specific padding if different */
+    font-size: 16px;
+    background-color: #4CAF50; /* Specific color if needed */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit-btn:hover {
+    background-color: #388e3c;
+}
+
+#message {
+    margin-top: 15px;
+    margin-bottom: 15px; /* Added margin */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.leaderboard-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#leaderboard {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+#leaderboard h2 {
+   font-size: 24px;
+   color: #1e1e1e;
+   margin-bottom: 15px;
+}
+
+#leaderboard-list {
+    list-style: none;
+    padding: 0;
+    max-height: 300px; /* Limit height for scrollability */
+    overflow-y: auto; /* Enable scrolling */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+}
+
+#leaderboard-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: #555;
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#leaderboard-list li span {
+    font-weight: bold;
+    color: #333;
+}
+
+#leaderboard-list li .player-name {
+    flex-grow: 1; /* Allow name to take up available space */
+    text-align: left;
+    margin-right: 10px;
+}
+
+#leaderboard-list li .score-info {
+    text-align: right;
+    font-size: 13px;
+    color: #777;
+}
+
+.player-name-input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: calc(100% - 20px); /* Adjust width */
+    max-width: 250px;
+}
+
+/* ✅ 用於隱藏重新開始按鈕和其他元素的通用類別 */
+.hidden {
+    display: none !important; /* 強制隱藏 */
+}
